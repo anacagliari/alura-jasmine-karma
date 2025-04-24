@@ -9,11 +9,12 @@ import { v4 as uuidv4 } from "uuid";
 export class UniqueIdService {
   // Propriedade privada que armazena o número total de IDs gerados.
   private numberOfGenerateIds = 0;
+  private validId = /^[A-Za-z]+[\w\-\:\.]*$/;
 
   // Método público que gera um ID único com um prefixo fornecido.
   public generateUniqueIdWithPrefix(prefix: string): string {
     // Verifica se o prefixo é válido (não vazio). Caso contrário, lança um erro.
-    if (!prefix) {
+    if (!prefix || !this.validId.test(prefix)) {
       throw new Error("Prefix can not be empty.");
     }
 
