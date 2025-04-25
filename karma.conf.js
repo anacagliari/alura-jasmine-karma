@@ -8,7 +8,9 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      // require('karma-firefox-launcher') => npm install -D karma-firefox-launcher@1.3.0
       require('karma-jasmine-html-reporter'),
+      // require('karma-junit-reporter'), => npm install -D karma-junit-reporter | servidor de integração contínua
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
@@ -31,5 +33,21 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true
+    // customLaunchers: {
+    //   FirefoxSemCabeca: {
+    //     base: 'Firefox',
+    //     flags: ['-headless'] // consome menos memória
+    //   }
+    // }
+
+    // na linha 8 do arquivo packege.json:
+
+    // "test-common": "ng test --browsers Chrome,Firefox",    => não pode ter espaço entre Chrome e Firefox
+    // "test-ci": "ng test --watch=false --reporters junit --browsers ChromeHeadless,FirefoxSemCabeca",    => ou pode usar apenas o FirefoxHeadless, sem esse customLaunchers
+    // "test-coverage": "ng test --watch=false --sourceMap=true --codeCoverage=true --browsers ChromeHeadless",
+          // => --watch=false não abre o navegador
+          // => --sourceMap=true gera o arquivo .js.map, que é necessário para o coverage funcionar corretamente
+          // => --codeCoverage=true gera o arquivo de cobertura de código
+          // => --browsers ChromeHeadless executa o teste no Chrome em modo headless
   });
 };

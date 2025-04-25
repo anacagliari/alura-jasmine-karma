@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { LikeWidgetComponent } from "./like-widget.component";
 import { LikeWidgetModule } from "./like-widget.module";
+// testes são escritos em jasmine, que é o framework de testes do Angular para escrever testes unitários mais simples e legíveis.
+// o karma é o runner de testes, que executa os testes e mostra os resultados no console.
 
 /*
 Este código é um conjunto de testes unitários para o componente LikeWidgetComponent usando o framework de testes do Angular (@angular/core/testing).
